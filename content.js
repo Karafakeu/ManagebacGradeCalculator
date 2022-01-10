@@ -20,10 +20,8 @@ for(let n=0;n<arlen;n++){
 
     }
 }
-let i = points.length
-i=i-1
 let regex = /[0-9]{1,3}/g;
-while (i > -1) {
+for(i=points.length-1;i>-1;i--){
     let pointst=points[i].innerHTML.replace("/ ","").replace(" pts","").split(" ")
     let grade = pointst[0]
     let max = pointst[1]
@@ -34,7 +32,17 @@ while (i > -1) {
         grades[weights[arr[i]]].push(gradefin)
     }else{
         grades[weights[arr[i]]]=[gradefin]
+    } 
+}
+for(let key in grades){
+    let w=0
+    let temp=0
+    if(grades.hasOwnProperty(key)){
+        // key                 = keys,  left of the ":"
+        // driversCounter[key] = value, right of the ":"
+        w=parseInt(key)
+        for(let key1 in grades[key]){
+            temp=temp+parseInt(grades[key][key1])
+        }
     }
-    console.log(grades);  
-    i=i-1
 }
