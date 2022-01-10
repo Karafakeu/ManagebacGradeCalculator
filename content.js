@@ -35,11 +35,6 @@ for(i=points.length-1;i>-1;i--){
         grades[arr[i]]=[gradefin]
     }
 }
-/* for(let key2 in weights){
-    if(!Object.keys(grades).includes(key2)){
-        grades[key2]=[100]
-    }
-}  */
 for(let key in grades){
     let w=0
     let temp=0
@@ -52,7 +47,13 @@ for(let key in grades){
         gradeavg=gradeavg+temp*w
     }
 }
-gradeavg=Math.round(gradeavg/100)
-console.log(weights);
-console.log(grades);
-console.log(gradeavg);
+let maxnum=0
+for(let b=0;b<Object.keys(grades).length-1;b++){
+    maxnum=maxnum+parseInt(weights[Object.keys(grades)[b]])
+}
+if (Math.round(gradeavg/maxnum)<=100){
+    gradeavg=Math.round(gradeavg/maxnum)
+}else{
+    gradeavg=100
+}
+console.log(gradeavg)
