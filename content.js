@@ -9,6 +9,6 @@ while (i > -1) {
     let max = pointst[1]
     let gradefin=Math.round((100/max)*grade)
     console.log(gradefin);
-
+    
     i = i-1
 }
