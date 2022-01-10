@@ -6,15 +6,16 @@ let arrt=$("div.labels-set")
 let arr=[]
 let arlen=arrt.length
 let weights={}
+let gradeavg=0
 let grades={}
 for (let u = 1; u < weigth1.length ; u++){
-    let temp=weigth1[u].innerText.replaceAll(" ","").replace("\n"," ").replace("%","").split(" ");
+    let temp=weigth1[u].innerText.replaceAll(" ","").replace("\n"," ").replace("%","").replaceAll("%","").split(" ");
     weights[temp[0]]=temp[1]
 }
 for(let n=0;n<arlen;n++){
     try{
         if(arrt[n].className!=arrt[n+1].className && arrt[n].className=="labels-set flex flex-start flex-wrap"){
-            arr.push(arrt[n].innerText.split("\n")[1].replaceAll(" ",""))
+            arr.push(arrt[n].innerText.split("\n")[1].replaceAll(" ","").replaceAll("%",""))
         }
     }catch (error){
 
@@ -28,21 +29,30 @@ for(i=points.length-1;i>-1;i--){
     let gradefin=Math.round((100/max)*grade)
     grade1[i].innerHTML=gradefin+"%"
     $("div.points")[i].replaceWith("")
-    if (grades.hasOwnProperty(weights[arr[i]])){
-        grades[weights[arr[i]]].push(gradefin)
+    if (grades.hasOwnProperty(arr[i])){
+        grades[arr[i]].push(gradefin)
     }else{
-        grades[weights[arr[i]]]=[gradefin]
-    } 
+        grades[arr[i]]=[gradefin]
+    }
 }
+/* for(let key2 in weights){
+    if(!Object.keys(grades).includes(key2)){
+        grades[key2]=[100]
+    }
+}  */
 for(let key in grades){
     let w=0
     let temp=0
     if(grades.hasOwnProperty(key)){
-        // key                 = keys,  left of the ":"
-        // driversCounter[key] = value, right of the ":"
-        w=parseInt(key)
+        w=weights[key]
         for(let key1 in grades[key]){
             temp=temp+parseInt(grades[key][key1])
         }
+        temp=temp/grades[key].length
+        gradeavg=gradeavg+temp*w
     }
 }
+gradeavg=Math.round(gradeavg/100)
+console.log(weights);
+console.log(grades);
+console.log(gradeavg);
