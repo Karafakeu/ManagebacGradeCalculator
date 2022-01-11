@@ -13,8 +13,8 @@ for (let u = 1; u < weigth1.length ; u++){
     weights[temp[0]]=temp[1]
 }
 for(let n=0;n<arlen;n++){
-    try{
-        if(arrt[n].className!=arrt[n+1].className && arrt[n].className=="labels-set flex flex-start flex-wrap"){
+    try{ 
+        if(arrt[n+1].innerText!="N/A" && arrt[n].className!=arrt[n+1].className && arrt[n].className=="labels-set flex flex-start flex-wrap"){
             arr.push(arrt[n].innerText.split("\n")[1].replaceAll(" ","").replaceAll("%",""))
         }
     }catch (error){
@@ -29,11 +29,11 @@ for(i=points.length-1;i>-1;i--){
     let gradefin=Math.round((100/max)*grade)
     grade1[i].innerHTML=gradefin+"%"
     $("div.points")[i].replaceWith("")
-    if (grades.hasOwnProperty(arr[i])){
-        grades[arr[i]].push(gradefin)
-    }else{
-        grades[arr[i]]=[gradefin]
-    }
+        if (grades.hasOwnProperty(arr[i])){
+            grades[arr[i]].push(gradefin)
+        }else{
+            grades[arr[i]]=[gradefin]
+        }
 }
 for(let key in grades){
     let w=0
@@ -48,7 +48,7 @@ for(let key in grades){
     }
 }
 let maxnum=0
-for(let b=0;b<Object.keys(grades).length-1;b++){
+for(let b=0;b<Object.keys(grades).length;b++){
     maxnum=maxnum+parseInt(weights[Object.keys(grades)[b]])
 }
 if (Math.round(gradeavg/maxnum)<=100){
@@ -56,4 +56,3 @@ if (Math.round(gradeavg/maxnum)<=100){
 }else{
     gradeavg=100
 }
-console.log(gradeavg)
