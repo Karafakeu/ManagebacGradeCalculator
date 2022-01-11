@@ -56,3 +56,4 @@ if (Math.round(gradeavg/maxnum)<=100){
 }else{
     gradeavg=100
 }
+console.log(gradeavg);
