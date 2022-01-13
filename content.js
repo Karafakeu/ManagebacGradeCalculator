@@ -32,21 +32,20 @@ function onUrlChange() {
     
         }
     }
+    for (i=points.length-1;i>-1;i--){
+        let pointstt=points[i].innerHTML.replace("/ ","").replace(" pts","").split(" ")
+        if (pointstt[0]==""){
+            points.splice(i,1)
+        }
+    }
     let regex = /[0-9]{1,3}/g;
     for(i=points.length-1;i>-1;i--){
         let pointst=points[i].innerHTML.replace("/ ","").replace(" pts","").split(" ")
         let grade = pointst[0]
         let max = pointst[1]
         let gradefin=Math.round((100/max)*grade)
-        if (pointst[0]==" "){
+        if (grade1[i]!==undefined){
             grade1[i].innerHTML=gradefin+"%"
-            points[i].replaceWith("")
-                if (grades.hasOwnProperty(arr[i])){
-                    grades[arr[i]].push(gradefin)
-                }else{
-                    grades[arr[i]]=[gradefin]
-                }
-        }else{
             points[i].replaceWith("")
             if (grades.hasOwnProperty(arr[i])){
                 grades[arr[i]].push(gradefin)
@@ -110,21 +109,20 @@ for(let n=0;n<arlen;n++){
 
     }
 }
+for (i=points.length-1;i>-1;i--){
+    let pointstt=points[i].innerHTML.replace("/ ","").replace(" pts","").split(" ")
+    if (pointstt[0]==""){
+        points.splice(i,1)
+    }
+}
 let regex = /[0-9]{1,3}/g;
 for(i=points.length-1;i>-1;i--){
     let pointst=points[i].innerHTML.replace("/ ","").replace(" pts","").split(" ")
     let grade = pointst[0]
     let max = pointst[1]
     let gradefin=Math.round((100/max)*grade)
-    if (pointst[0]==" "){
+    if (grade1[i]!==undefined){
         grade1[i].innerHTML=gradefin+"%"
-        points[i].replaceWith("")
-            if (grades.hasOwnProperty(arr[i])){
-                grades[arr[i]].push(gradefin)
-            }else{
-                grades[arr[i]]=[gradefin]
-            }
-    }else{
         points[i].replaceWith("")
         if (grades.hasOwnProperty(arr[i])){
             grades[arr[i]].push(gradefin)
