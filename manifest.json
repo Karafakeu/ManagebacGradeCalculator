@@ -10,5 +10,13 @@
         "matches": ["https://opengate.managebac.com/student/*"],
         "js": ["jquery.js","content.js"]
       }
-    ]
+    ],
+    "icons":{
+      "16": "pfp.png",
+      "48": "pfp.png",
+      "128": "pfp.png"
+    },
+    "browser_action": {
+      "default_icon": "pfp.png"
+    }
 }
