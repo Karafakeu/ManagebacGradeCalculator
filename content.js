@@ -38,13 +38,22 @@ function onUrlChange() {
         let grade = pointst[0]
         let max = pointst[1]
         let gradefin=Math.round((100/max)*grade)
-        grade1[i].innerHTML=gradefin+"%"
-        $("div.points")[i].replaceWith("")
+        if (pointst[0]==" "){
+            grade1[i].innerHTML=gradefin+"%"
+            points[i].replaceWith("")
+                if (grades.hasOwnProperty(arr[i])){
+                    grades[arr[i]].push(gradefin)
+                }else{
+                    grades[arr[i]]=[gradefin]
+                }
+        }else{
+            points[i].replaceWith("")
             if (grades.hasOwnProperty(arr[i])){
                 grades[arr[i]].push(gradefin)
             }else{
                 grades[arr[i]]=[gradefin]
             }
+        }
     }
     for(let key in grades){
         let w=0
@@ -76,7 +85,7 @@ function onUrlChange() {
             tempt[l].innerText="Final Grade: "+gradeavgstr
         }else{}
     }
-    },2000)
+    },2500)
 }
 let points = $("div.points")
 let grade1=$("span.grade")
@@ -107,13 +116,22 @@ for(i=points.length-1;i>-1;i--){
     let grade = pointst[0]
     let max = pointst[1]
     let gradefin=Math.round((100/max)*grade)
-    grade1[i].innerHTML=gradefin+"%"
-    $("div.points")[i].replaceWith("")
+    if (pointst[0]==" "){
+        grade1[i].innerHTML=gradefin+"%"
+        points[i].replaceWith("")
+            if (grades.hasOwnProperty(arr[i])){
+                grades[arr[i]].push(gradefin)
+            }else{
+                grades[arr[i]]=[gradefin]
+            }
+    }else{
+        points[i].replaceWith("")
         if (grades.hasOwnProperty(arr[i])){
             grades[arr[i]].push(gradefin)
         }else{
             grades[arr[i]]=[gradefin]
         }
+    }
 }
 for(let key in grades){
     let w=0
