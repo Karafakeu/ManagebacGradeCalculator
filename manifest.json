@@ -1,10 +1,7 @@
 {
     "name": "Managebac Grade Calculator",
-    "version": "1.0",
+    "version": "1.1",
     "manifest_version": 2,
-    "permissions": [
-      "tabs"
-    ],
     "content_scripts": [
       {
         "matches": ["https://opengate.managebac.com/student/*"],
@@ -12,11 +9,11 @@
       }
     ],
     "icons":{
-      "16": "pfp.png",
-      "48": "pfp.png",
-      "128": "pfp.png"
+      "16": "pfp.jpg",
+      "48": "pfp.jpg",
+      "128": "pfp.jpg"
     },
     "browser_action": {
-      "default_icon": "pfp.png"
+      "default_icon": "pfp.jpg"
     }
 }

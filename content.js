@@ -9,7 +9,7 @@ new MutationObserver(() => {
 
 function onUrlChange() {
     setTimeout(function(){
-        let points = $("div.points")
+    let points = $("div.points")
     let grade1=$("span.grade")
     let weigth1=$("div.list-item")
     let arrt=$("div.labels-set")
