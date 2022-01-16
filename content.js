@@ -26,7 +26,11 @@ function onUrlChange() {
     for(let n=0;n<arlen;n++){
         try{ 
             if(arrt[n+1].innerText!="N/A" && arrt[n].className!=arrt[n+1].className && arrt[n].className=="labels-set flex flex-start flex-wrap"){
-                arr.push(arrt[n].innerText.split("\n")[1].replaceAll(" ","").replaceAll("%",""))
+                if (arrt[n].innerText.includes("HL\nSL")){
+                    arr.push(arrt[n].innerText.split("\n")[3].replaceAll(" ","").replaceAll("%",""))
+                }else{
+                    arr.push(arrt[n].innerText.split("\n")[1].replaceAll(" ","").replaceAll("%",""))
+                }
             }
         }catch (error){
     
@@ -103,7 +107,11 @@ for (let u = 1; u < weigth1.length ; u++){
 for(let n=0;n<arlen;n++){
     try{ 
         if(arrt[n+1].innerText!="N/A" && arrt[n].className!=arrt[n+1].className && arrt[n].className=="labels-set flex flex-start flex-wrap"){
-            arr.push(arrt[n].innerText.split("\n")[1].replaceAll(" ","").replaceAll("%",""))
+            if (arrt[n].innerText.includes("HL\nSL")){
+                arr.push(arrt[n].innerText.split("\n")[3].replaceAll(" ","").replaceAll("%",""))
+            }else{
+                arr.push(arrt[n].innerText.split("\n")[1].replaceAll(" ","").replaceAll("%",""))
+            }
         }
     }catch (error){
 
