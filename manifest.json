@@ -1,19 +1,25 @@
 {
-    "name": "Managebac Grade Calculator",
-    "version": "1.2",
-    "manifest_version": 2,
-    "content_scripts": [
-      {
-        "matches": ["https://opengate.managebac.com/student/*"],
-        "js": ["jquery.js","content.js"]
-      }
-    ],
-    "icons":{
-      "16": "pfp.jpg",
-      "48": "pfp.jpg",
-      "128": "pfp.jpg"
-    },
-    "browser_action": {
-      "default_icon": "pfp.jpg"
+  "name": "Managebac Grade Calculator",
+  "version": "1.2",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": [
+        "https://opengate.managebac.com/student/*"
+      ],
+      "js": [
+        "jquery.js",
+        "content.js"
+      ]
     }
+  ],
+  "icons": {
+    "16": "pfp.jpg",
+    "48": "pfp.jpg",
+    "128": "pfp.jpg"
+  },
+  "browser_action": {
+    "default_icon": "pfp.jpg",
+    "default_popup": "popup.html"
+  }
 }
