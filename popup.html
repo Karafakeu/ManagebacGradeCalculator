@@ -1,12 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="css/main.css">
         <meta charset="UFT-8">
-        <title>Document</title>
+        <title>Popup</title>
     </head>
     <body>
-        <div id="rectangletop"></div>
-        <script src="popup.js"></script>
+        <div class="navbar">
+            <div class="con">
+                <div class="left-part">
+                    <img src="imgs/pfp.svg" alt="Managebac Grade Calculator logo">
+                    <h1>Managebac Grade Calculator</h1>
+                </div>
+                <div class="right-part">
+                    <img id="info" class="info" src="imgs/InfoIcon.svg" alt="Click to open information about the extension">
+                    <img id="sett" class="sett" src="imgs/GearIcon.svg" alt="Click to open settings for the extension">
+                </div>
+            </div>
+        </div>
+        <section class="hero1" id="hero1">
+            <h1>Overview</h1>
+            <div class="overview">
+                <div class="description">
+                    <ul>
+                        <li>Tool for students to enhance their look of Managebac.</li>
+                        <li>Calculate your grades, change the look of your grades and much more!</li>
+                        <li>Simply go to any of your classes, go into tasks and you see all the features you chose in settings.</li>
+                    </ul>
+                </div>
+                <div class="change-log">
+                    <div class="change-cta">
+                        <ul>
+                            <li>Change Log</li>
+                            <li><div class="line"></div></li>
+                        </ul>
+                    </div>
+                    <div class="changes">
+                        <ul>
+                            <li>1.3 - Popup added, better extension description, Bug fixes</li>
+                            <li>1.2 - Bugs fixed</li>
+                            <li>1.1 - Publish version</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="hero2" id="hero2">
+            <h1>Settings</h1>
+            <div class="sets">
+                <ul>
+                    <li>Color of the final grade: <input id="finalColor" type="color"></li>
+                    <li>Change the style of grades: <input id="gradeStyle" type="checkbox"></li>
+                    <li>Calculate final grade: <input id="grade" type="checkbox"></li>
+                </ul>
+                <div class="save-but" id="save-btn">Save</div>
+            </div>
+        </section>
+        <section class="footer">
+            <div class="made-by">Made by: Jakub Kubin, Dominik Novotny</div>
+            <ul>
+                <li>Version: 1.3</li>
+                <li class="con">Contact: 18kubin@opengate.cz</li>
+            </ul>
+        </section>
+        <script src="popup.js" defer></script>
+        <script type="module" src="save.js" defer></script>
+        <script type="module" src="settings.js" defer></script>
     </body>
 </html>
