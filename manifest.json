@@ -1,29 +1,37 @@
 {
   "name": "Managebac Grade Calculator",
-  "version": "1.3",
-  "manifest_version": 2,
-  "content_scripts": [
-    {
-      "matches": [
-        "https://opengate.managebac.com/student/*"
-      ],
-      "js": [
-        "jquery.js",
-        "content.js",
-        "saveHandle.js"
-      ]
-    }
-  ],
+  "version": "2.0",
+  "manifest_version": 3,
+  "description": "A tool to help calculate grades on Managebac.",
+  "action": {
+    "default_icon": {
+      "16": "imgs/pfp.png",
+      "48": "imgs/pfp.png",
+      "128": "imgs/pfp.png"
+    },
+    "default_popup": "popup.html"
+  },
   "permissions": [
     "storage"
   ],
+  "host_permissions": [
+    "https://opengate.managebac.com/student/classes/*/core_tasks"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://opengate.managebac.com/student/classes/*/core_tasks"
+      ],
+      "js": [
+        "jquery.js",
+        "content.js"
+      ]
+    }
+  ],
   "icons": {
-    "16": "imgs/pfp.jpg",
-    "48": "imgs/pfp.jpg",
-    "128": "imgs/pfp.jpg"
-  },
-  "browser_action": {
-    "default_icon": "imgs/pfp.jpg",
-    "default_popup": "popup.html"
+    "16": "imgs/pfp.png",
+    "48": "imgs/pfp.png",
+    "128": "imgs/pfp.png"
   }
 }
+
