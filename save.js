@@ -6,7 +6,7 @@ const predictionTable=document.getElementById("predictionTable")
 
 
 async function saveSetts(gradeCalculation,gradeStyle,finalColor, predictionTable){
-    await chrome.storage.sync.set({
+    chrome.storage.sync.set({
         "gradeCalculation": gradeCalculation, 
         "gradeStyle": gradeStyle,
         "finalColor": finalColor,
