@@ -129,7 +129,7 @@ async function main(){
             .getElementsByClassName("label-and-due")[0].getElementsByClassName("labels-set")[0].getElementsByClassName("label"))
             // Find the label with the category
             .find(label => Object.keys(categories).includes(label.innerHTML.trim().split("\n")[0]))?.innerHTML.trim().split("\n")[0]
-        let grading = taskCard.getElementsByClassName("assessment")[0].getElementsByClassName("flex")[0].getElementsByClassName("cell")[0]
+        let grading = taskCard.getElementsByClassName("assessment")[0]?.getElementsByClassName("flex")[0].getElementsByClassName("cell")[0]
             ?.getElementsByClassName("points")[0]?.innerHTML.replace(" pts", "")
         if (!grading) {return}
         let grade = (parseFloat(grading.split("/")[0]) / parseFloat(grading.split("/")[1])) * 100
@@ -153,7 +153,6 @@ async function main(){
 
     // Calculate final grade
     if (settings.gradeCalculation || settings.gradeCalculation == undefined) {
-        console.log(grades)
         let finalGrade = calculateFinalGrade(categories,grades)
 
         Array.from(finalGradeObjects).forEach(finalGradeObject => {
