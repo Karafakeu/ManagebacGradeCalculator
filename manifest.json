@@ -1,6 +1,6 @@
 {
   "name": "Managebac Grade Calculator",
-  "version": "2.2",
+  "version": "2.3",
   "manifest_version": 3,
   "description": "A tool to help calculate grades on Managebac.",
   "action": {

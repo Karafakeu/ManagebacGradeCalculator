@@ -18,7 +18,12 @@ function getSettings() {
 // add grade to the prediction table
 function addGrade(category){
     let inputs = document.getElementById(category + "-inputs").getElementsByClassName("inputs")[0]
-    inputs.innerHTML += `<input class="grade-input" style="width: 60px;" value=""/>`
+    const newInput = document.createElement("input");
+    newInput.className = "grade-input";
+    newInput.style.width = "60px";
+    newInput.value = "";
+    newInput.addEventListener("input", () => predictGrade());
+    inputs.appendChild(newInput);
 }
 
 // calculate final grade using categories and grades passed
@@ -176,47 +181,28 @@ async function main(){
         // table
         document.body.getElementsByClassName("content-block")[0].appendChild(createPredictionTable(categories,grades))
 
-        // final prediction button
-        const finalPrediction = document.createElement("button");
-        finalPrediction.id = "finalPredictionButton";
-        finalPrediction.style.background = "#2A5CFF";
-        finalPrediction.style.marginTop = "20px";
-        finalPrediction.style.border = "none";
-        finalPrediction.style.borderRadius = "5px";
-        finalPrediction.style.padding = "5px";
-        finalPrediction.style.color = "white";
-        finalPrediction.style.fontSize = "1.2em";
-        finalPrediction.style.cursor = "pointer";
-        finalPrediction.innerHTML = "Predict Final Grade";
-        document.body.getElementsByClassName("content-block")[0].appendChild(finalPrediction);
-
         // final prediction text
         const finalPredictionText = document.createElement("p");
-        finalPredictionText.style.marginTop = "10px";
+        finalPredictionText.style.marginTop = "20px";
+        finalPredictionText.style.fontSize = "1.2em";
         finalPredictionText.id = "finalPredictionText";
         finalPredictionText.innerHTML = "Predicted Final Grade: " + calculateFinalGrade(categories,grades);
         document.body.getElementsByClassName("content-block")[0].appendChild(finalPredictionText);
 
-        // final prediction
-        let finalPredictionButton = document.getElementById("finalPredictionButton")
-        finalPredictionButton.addEventListener("click", () => {
-            predictGrade()
-
-            finalPredictionButton.style.backgroundColor="#072175"
-            finalPredictionButton.style.color="#FFFFFF"
-
-            setTimeout(()=>{
-                finalPredictionButton.style.backgroundColor="#2A5CFF"
-                finalPredictionButton.style.color="#E5E5E5"
-            },1000)
-        })
-
+        // add grade buttons
         document.querySelectorAll('.add-grade-btn').forEach(button => {
             button.addEventListener('click', (event) => {
                 const category = event.target.getAttribute('data-category');
                 addGrade(category);
             });
         });
+
+        // grade input automatic recalculation
+        Array.from(document.getElementsByClassName('grade-input')).forEach(input => {
+            input.addEventListener('input', (event) => {
+                predictGrade()
+            });
+        })
     }
 }
 
