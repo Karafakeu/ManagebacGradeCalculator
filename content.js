@@ -1,13 +1,8 @@
-let lastUrl = location.href; 
-new MutationObserver(() => {
-    const url = location.href;
-    if (url !== lastUrl && url.match(/^https:\/\/opengate\.managebac\.com\/student\/classes\/[^\/]+\/core_tasks$/)) {
-        lastUrl = url;
-        setTimeout(() => {
-            main();
-        }, 2000);
-    }
-}).observe(document, {subtree: true, childList: true});
+chrome.runtime.onMessage.addListener(function(request) {
+  if (request && request.type === 'page-rendered') {
+    main()
+  }
+});
 
 function getSettings() {
     return new Promise((resolve) => {
@@ -168,18 +163,30 @@ async function main(){
 
     //grade table
     if (settings.predictionTable || settings.predictionTable == undefined) {
+        // delete all instances of prediction table to load a new one
+        document.getElementById("predictionTableContainer")?.remove();
+
+        // create container for prediction table
+        const container = document.createElement("div");
+        container.id = "predictionTableContainer";
+        container.style.width = "100%";
+        container.style.display = "flex";
+        container.style.flexDirection = "column";
+        document.body.getElementsByClassName("f-layout-main__content")[0].getElementsByClassName("p-6 pt-4")[0].appendChild(container);
+
         // line
         const line = document.createElement("hr");
         line.style.marginTop = "20px";
-        document.body.getElementsByClassName("content-block")[0].appendChild(line);
+        document
+        document.getElementById("predictionTableContainer").appendChild(line);
 
         // heading
         const heading = document.createElement("h3");
         heading.innerHTML = "Prediction Table";
-        document.body.getElementsByClassName("content-block")[0].appendChild(heading);
+        document.getElementById("predictionTableContainer").appendChild(heading);
 
         // table
-        document.body.getElementsByClassName("content-block")[0].appendChild(createPredictionTable(categories,grades))
+        document.getElementById("predictionTableContainer").appendChild(createPredictionTable(categories,grades))
 
         // final prediction text
         const finalPredictionText = document.createElement("p");
@@ -187,7 +194,7 @@ async function main(){
         finalPredictionText.style.fontSize = "1.2em";
         finalPredictionText.id = "finalPredictionText";
         finalPredictionText.innerHTML = "Predicted Final Grade: " + calculateFinalGrade(categories,grades);
-        document.body.getElementsByClassName("content-block")[0].appendChild(finalPredictionText);
+        document.getElementById("predictionTableContainer").appendChild(finalPredictionText);
 
         // add grade buttons
         document.querySelectorAll('.add-grade-btn').forEach(button => {

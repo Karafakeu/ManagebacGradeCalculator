@@ -1,6 +1,6 @@
 {
   "name": "Managebac Grade Calculator",
-  "version": "2.3",
+  "version": "2.4",
   "manifest_version": 3,
   "description": "A tool to help calculate grades on Managebac.",
   "action": {
@@ -12,15 +12,17 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "webNavigation",
+    "webRequest"
   ],
   "host_permissions": [
-    "https://opengate.managebac.com/student/*"
+    "*://*.managebac.com/student/classes/*/core_tasks"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://opengate.managebac.com/student/*"
+        "*://*.managebac.com/student/classes/*/core_tasks"
       ],
       "js": [
         "jquery.js",
@@ -28,6 +30,9 @@
       ]
     }
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "icons": {
     "16": "imgs/pfp.png",
     "48": "imgs/pfp.png",
